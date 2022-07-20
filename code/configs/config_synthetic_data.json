@@ -1,0 +1,80 @@
+{
+    "model": {
+        "use_ldr_image": false,
+        "num_train_incident_samples": 128,
+        "num_eval_incident_samples": 256,
+        "brdf_network": {
+            "in_dims": 3,
+            "out_dims": 5,
+            "dims": [
+                512,
+                512,
+                512,
+                512,
+                512,
+                512,
+                512,
+                512
+            ],
+            "skip_connection": [
+                4
+            ],
+            "weight_norm": false,
+            "multires_view": 6
+        },
+        "neilf_network": {
+            "in_dims": 6,
+            "out_dims": 3,
+            "dims": [
+                128,
+                128,
+                128,
+                128,
+                128,
+                128,
+                128,
+                128
+            ],
+            "skip_connection": [
+                4
+            ],
+            "position_insertion": [
+                4
+            ],
+            "weight_norm": false,
+            "multires_view": 6
+        }
+    },
+    "train": {
+        "num_pixel_samples": 8192,
+        "training_iterations": 30000,
+        "lr": 0.002,
+        "lr_scaler": 0.01,
+        "lr_decay": 0.2,
+        "lr_decay_iters": [
+            10000,
+            20000
+        ],
+        "lambertian_weighting": 0.005,
+        "smoothness_weighting": 0.0005
+    },
+    "eval": {
+        "validation_indexes": [
+            9,
+            18,
+            30,
+            41,
+            50,
+            62,
+            73,
+            82,
+            94
+        ],
+        "plot_frequency": 10000,
+        "save_frequency": 10000,
+        "num_plot_images": 1,
+        "max_depth": 3.0,
+        "resolution": 100,
+        "image_scale": 1.5
+    }
+}
